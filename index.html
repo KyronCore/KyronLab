@@ -8,6 +8,55 @@
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 body{background:#000;overflow:hidden;font-family:'Courier New',monospace;color:#fff;width:100vw;height:100vh;touch-action:none;}
 
+
+/* ── INTRO PANEL ── */
+#intro-overlay{position:fixed;inset:0;background:#000;z-index:9000;display:flex;align-items:center;justify-content:center;overflow-y:auto;}
+#intro-box{width:min(720px,96vw);padding:0 0 32px;animation:slideUp .5s cubic-bezier(.16,1,.3,1);}
+.intro-hero{text-align:center;padding:36px 20px 20px;}
+.intro-logo{font-size:clamp(28px,6vw,48px);font-weight:900;background:linear-gradient(135deg,#ff6600,#ffcc00,#ff3300);background-size:200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.12em;animation:shimmer 3s linear infinite;}
+.intro-sub{font-size:clamp(10px,2vw,13px);color:#554433;letter-spacing:.2em;margin-top:6px;}
+.intro-desc{font-size:13px;color:#886644;line-height:1.8;text-align:center;max-width:500px;margin:14px auto 0;}
+.intro-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,100,0,.25),transparent);margin:22px 20px;}
+.intro-section-title{font-size:9px;letter-spacing:.2em;color:#442200;text-align:center;margin-bottom:18px;}
+.physicists-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;padding:0 16px;}
+.physicist-card{background:linear-gradient(135deg,rgba(10,5,20,.95),rgba(5,10,15,.95));border:1px solid rgba(255,100,0,.15);border-radius:12px;padding:16px 14px;transition:border-color .2s;}
+.physicist-card:hover{border-color:rgba(255,150,0,.4);}
+.physicist-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:28px;border:2px solid rgba(255,100,0,.18);overflow:hidden;background:#0a0510;}
+.physicist-avatar img{width:100%;height:100%;object-fit:cover;border-radius:50%;filter:sepia(.2) contrast(1.05);}
+.physicist-name{font-size:11px;font-weight:bold;color:#ffaa44;text-align:center;letter-spacing:.06em;margin-bottom:3px;}
+.physicist-years{font-size:9px;color:#442200;text-align:center;margin-bottom:8px;letter-spacing:.08em;}
+.physicist-eq{font-size:10px;color:#44aaff;text-align:center;margin-bottom:7px;font-style:italic;padding:4px 8px;background:rgba(0,80,255,.06);border-radius:6px;border:1px solid rgba(60,120,255,.12);}
+.physicist-desc{font-size:9px;color:#554433;line-height:1.7;text-align:center;}
+.intro-footer{padding:24px 20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:gap;gap:12px;}
+.intro-skip{display:flex;align-items:center;gap:8px;cursor:pointer;}
+.intro-skip input{accent-color:#cc7700;width:15px;height:15px;}
+.intro-skip span{font-size:10px;color:#332;}
+.intro-enter{padding:11px 28px;border-radius:24px;border:1px solid rgba(255,110,0,.4);background:linear-gradient(90deg,rgba(255,70,0,.15),rgba(255,140,0,.1));color:#ffaa44;font-size:11px;letter-spacing:.14em;cursor:pointer;font-family:'Courier New',monospace;font-weight:bold;transition:all .2s;}
+.intro-enter:hover,.intro-enter:active{background:linear-gradient(90deg,rgba(255,70,0,.3),rgba(255,140,0,.2));border-color:rgba(255,160,0,.6);box-shadow:0 0 20px rgba(255,100,0,.15);}
+@media(max-width:480px){.physicists-grid{grid-template-columns:1fr 1fr;}.physicist-avatar{width:48px;height:48px;font-size:22px;}}
+
+
+/* ── COURSE SECTIONS ── */
+.course-sections{padding:0 16px;display:flex;flex-direction:column;gap:8px;}
+.cs-block{background:rgba(8,5,20,.85);border:1px solid rgba(255,100,0,.12);border-radius:10px;overflow:hidden;}
+.cs-block[open]{border-color:rgba(255,140,0,.25);}
+.cs-title{font-size:11px;font-weight:bold;color:#cc8833;letter-spacing:.08em;padding:11px 14px;cursor:pointer;list-style:none;display:flex;align-items:center;gap:8px;user-select:none;}
+.cs-title::before{content:'▶';font-size:8px;color:#664422;transition:transform .2s;}
+.cs-block[open] .cs-title::before{transform:rotate(90deg);}
+.cs-body{padding:0 14px 12px;border-top:1px solid rgba(255,255,255,.04);}
+.cs-sub{font-size:10px;font-weight:bold;color:#ff9944;margin:10px 0 5px;letter-spacing:.05em;}
+.cs-text{font-size:10px;color:#776655;line-height:1.8;margin-bottom:6px;}
+.cs-text strong{color:#cc9955;}
+.cs-text em{color:#887744;}
+.cs-fact{font-size:9px;color:#554433;background:rgba(255,100,0,.05);border-left:2px solid rgba(255,100,0,.25);padding:6px 10px;border-radius:0 6px 6px 0;margin:5px 0;line-height:1.7;}
+.cs-formula{font-size:13px;color:#44aaff;text-align:center;padding:8px;background:rgba(0,80,255,.06);border:1px solid rgba(40,120,255,.12);border-radius:6px;margin:8px 0;letter-spacing:.05em;}
+.cs-eq{color:#44aaff;font-style:italic;}
+.cs-grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:6px 0;}
+@media(max-width:480px){.cs-grid2{grid-template-columns:1fr;}}
+/* ── EM LAB MODE TOGGLE ── */
+.em-mode-strip{display:flex;align-items:center;gap:5px;flex-shrink:0;margin-left:8px;}
+.em-mode-btn{font-size:9px;padding:3px 9px;border-radius:10px;cursor:pointer;font-family:'Courier New',monospace;border:1px solid;transition:all .15s;}
+
 /* ── LOADING ── */
 #loading{position:fixed;inset:0;background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity .8s;}
 #loading.hide{opacity:0;pointer-events:none;}
@@ -152,6 +201,135 @@ body{background:#000;overflow:hidden;font-family:'Courier New',monospace;color:#
   <div class="load-msg" id="load-msg">initializing magnetic fields...</div>
 </div>
 
+<!-- INTRO PANEL -->
+<div id="intro-overlay" style="display:none;">
+  <div id="intro-box">
+    <div class="intro-hero">
+      <div class="intro-logo">KyronLab</div>
+      <div class="intro-sub">MAGNETIC FIELD SIMULATOR</div>
+      <p class="intro-desc">Le champ magnétique — une force invisible qui gouverne l'univers électrique. Découvrez les esprits qui l'ont révélé.</p>
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-section-title">⚡ LES PIONNIERS DU CHAMP MAGNÉTIQUE</div>
+    <div class="physicists-grid">
+
+      <div class="physicist-card">
+        <div class="physicist-avatar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hans_Christian_%C3%98rsted_daguerreotype_1842-48.jpg/120px-Hans_Christian_%C3%98rsted_daguerreotype_1842-48.jpg" alt="Ørsted" onerror="this.style.display='none';this.parentNode.innerHTML='🧲'">
+        </div>
+        <div class="physicist-name">Hans Christian Ørsted</div>
+        <div class="physicist-years">1777 — 1851 · Danemark</div>
+        <div class="physicist-eq">I → B ⊥ fil</div>
+        <div class="physicist-desc">Découvre en 1820 qu'un courant électrique dévie une aiguille aimantée — naissance de l'électromagnétisme.</div>
+      </div>
+
+      <div class="physicist-card">
+        <div class="physicist-avatar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ampere_Andre_1825.jpg/120px-Ampere_Andre_1825.jpg" alt="Ampère" onerror="this.style.display='none';this.parentNode.innerHTML='⚡'">
+        </div>
+        <div class="physicist-name">André-Marie Ampère</div>
+        <div class="physicist-years">1775 — 1836 · France</div>
+        <div class="physicist-eq">B = μ₀I / 2πr</div>
+        <div class="physicist-desc">Formule la loi d'Ampère reliant le champ magnétique au courant qui le crée. Père de l'électrodynamique.</div>
+      </div>
+
+      <div class="physicist-card">
+        <div class="physicist-avatar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Michael_Faraday_001.jpg/120px-Michael_Faraday_001.jpg" alt="Faraday" onerror="this.style.display='none';this.parentNode.innerHTML='🔬'">
+        </div>
+        <div class="physicist-name">Michael Faraday</div>
+        <div class="physicist-years">1791 — 1867 · Angleterre</div>
+        <div class="physicist-eq">ε = −dΦ/dt</div>
+        <div class="physicist-desc">Invente le concept de lignes de champ et découvre l'induction électromagnétique. Visualise le champ magnétique.</div>
+      </div>
+
+      <div class="physicist-card">
+        <div class="physicist-avatar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/James_Clerk_Maxwell.png/120px-James_Clerk_Maxwell.png" alt="Maxwell" onerror="this.style.display='none';this.parentNode.innerHTML='∿'">
+        </div>
+        <div class="physicist-name">James Clerk Maxwell</div>
+        <div class="physicist-years">1831 — 1879 · Écosse</div>
+        <div class="physicist-eq">∇×B = μ₀J + μ₀ε₀∂E/∂t</div>
+        <div class="physicist-desc">Unifie électricité, magnétisme et lumière en 4 équations fondamentales. Prédit les ondes électromagnétiques.</div>
+      </div>
+
+      <div class="physicist-card">
+        <div class="physicist-avatar" style="font-size:13px;font-weight:bold;color:#ff9966;flex-direction:column;gap:2px;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Jean-Baptiste_Biot.jpg/120px-Jean-Baptiste_Biot.jpg" alt="Biot" style="width:40px;height:40px;border-radius:50%;object-fit:cover;" onerror="this.style.display='none'">
+        </div>
+        <div class="physicist-name">Biot &amp; Savart</div>
+        <div class="physicist-years">1774–1862 · 1791–1841 · France</div>
+        <div class="physicist-eq">dB = μ₀I dl×r̂ / 4πr²</div>
+        <div class="physicist-desc">Établissent la loi donnant le champ magnétique créé par un élément de courant en tout point de l'espace.</div>
+      </div>
+
+      <div class="physicist-card">
+        <div class="physicist-avatar">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Hendrik_Antoon_Lorentz.jpg/120px-Hendrik_Antoon_Lorentz.jpg" alt="Lorentz" onerror="this.style.display='none';this.parentNode.innerHTML='⚛'">
+        </div>
+        <div class="physicist-name">Hendrik Lorentz</div>
+        <div class="physicist-years">1853 — 1928 · Pays-Bas</div>
+        <div class="physicist-eq">F = q(E + v×B)</div>
+        <div class="physicist-desc">Formule la force de Lorentz sur une charge en mouvement dans un champ électromagnétique. Prix Nobel 1902.</div>
+      </div>
+
+    </div>
+    <div class="intro-divider"></div>
+    <div class="intro-section-title">📘 SÉANCE 21 — LE CHAMP MAGNÉTIQUE</div>
+
+    <div class="course-sections">
+
+      <details class="cs-block" open>
+        <summary class="cs-title">II — Mise en évidence du champ magnétique</summary>
+        <div class="cs-body">
+          <div class="cs-sub">2-1/ Action d'un aimant sur une aiguille aimantée</div>
+          <p class="cs-text">Lorsqu'on place un aimant au voisinage d'une aiguille aimantée, son orientation change suivant la position de l'aimant. L'aimant <strong>modifie les propriétés de l'espace</strong> qui l'entoure : il crée un <strong>champ magnétique</strong> dans son environnement.</p>
+          <div class="cs-fact">🧲 Le champ magnétique est représenté par le vecteur <span class="cs-eq">B⃗</span>, de sens du pôle S vers le pôle N de l'aiguille.</div>
+          <div class="cs-sub">2-2/ Action d'un courant électrique sur une aiguille aimantée</div>
+          <p class="cs-text">Une aiguille aimantée dévie au voisinage d'un conducteur parcouru par un courant continu. Sa déviation dépend du <strong>sens du courant</strong>. Un courant continu crée un champ magnétique autour du conducteur <em>(Expérience d'Ørsted, 1820)</em>.</p>
+          <div class="cs-fact">⚡ Sens courant inversé → déviation de l'aiguille inversée.</div>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary class="cs-title">III — Champ magnétique et spectres magnétiques</summary>
+        <div class="cs-body">
+          <div class="cs-sub">3-3/ Spectre magnétique et lignes de champ</div>
+          <p class="cs-text">Les <strong>lignes de champ</strong> sont des courbes tangentes au vecteur <span class="cs-eq">B⃗</span> en chacun de leurs points. Elles sortent par le pôle <strong>Nord (N)</strong> et rentrent par le pôle <strong>Sud (S)</strong>.</p>
+          <div class="cs-fact">📐 Le spectre magnétique = ensemble de toutes les lignes de champ.</div>
+          <div class="cs-sub">3-4/ Champ magnétique uniforme</div>
+          <p class="cs-text">Un champ est <strong>uniforme</strong> si le vecteur <span class="cs-eq">B⃗</span> garde la même direction, le même sens et la même valeur en tout point. Lignes de champ = droites parallèles équidistantes. Cas typique : entrefer d'un aimant en U.</p>
+          <div class="cs-sub">3-5/ Superposition de champs magnétiques</div>
+          <p class="cs-text">Si plusieurs sources créent des champs <span class="cs-eq">B⃗₁, B⃗₂…</span>, le champ résultant est leur <strong>somme vectorielle</strong> :</p>
+          <div class="cs-formula">B⃗ = B⃗₁ + B⃗₂ + … + B⃗ₙ</div>
+          <div class="cs-fact">📏 Intensité résultante (champs ⊥) : B = √(B₁² + B₂²)</div>
+        </div>
+      </details>
+
+      <details class="cs-block">
+        <summary class="cs-title">IV — Champ magnétique terrestre</summary>
+        <div class="cs-body">
+          <p class="cs-text">Autour de la Terre règne un <strong>champ géomagnétique</strong>. Le pôle magnétique Sud se trouve près du pôle géographique Nord (et vice-versa). Ce champ ressemble à celui d'un aimant droit placé au centre de la Terre.</p>
+          <div class="cs-formula">B⃗_T = B⃗_H + B⃗_V</div>
+          <div class="cs-grid2">
+            <div class="cs-fact">🌍 <strong>B⃗_H</strong> : composante horizontale — permet à la boussole de s'orienter vers le Nord.</div>
+            <div class="cs-fact">⬇️ <strong>B⃗_V</strong> : composante verticale — pointe vers le bas dans l'hémisphère Nord.</div>
+          </div>
+          <p class="cs-text">L'axe géomagnétique fait un angle de <span class="cs-eq">11,5°</span> avec l'axe de rotation terrestre. L'angle entre <span class="cs-eq">B⃗_T</span> et <span class="cs-eq">B⃗_H</span> est l'<strong>inclinaison α</strong> — elle tend vers 90° aux pôles.</p>
+          <div class="cs-fact">📡 Valeur typique : B_H ≈ 2×10⁻⁵ T au Maroc.</div>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="intro-divider"></div>
+    <div class="intro-footer">
+      <label class="intro-skip"><input type="checkbox" id="intro-cb"><span>Ne plus afficher</span></label>
+      <button class="intro-enter" onclick="closeIntro()">⚡ Explorer le Lab</button>
+    </div>
+  </div>
+</div>
+
 <!-- WELCOME -->
 <div id="welcome-overlay" style="display:none;">
   <div id="welcome-box">
@@ -217,6 +395,11 @@ body{background:#000;overflow:hidden;font-family:'Courier New',monospace;color:#
           <span style="font-size:9px;color:#223;flex-shrink:0;">Mode:</span>
           <button class="mag-mode-btn" id="att-btn" style="border:1px solid rgba(40,255,100,.3);background:rgba(40,255,100,.12);color:#44ff88;" onclick="setMagMode('attract')">ATTRACT</button>
           <button class="mag-mode-btn" id="rep-btn" style="border:1px solid rgba(255,40,100,.3);background:transparent;color:#ff4488;" onclick="setMagMode('repel')">REPEL</button>
+        </div>
+        <div id="mn-mode-strip" class="em-mode-strip" style="display:none;">
+          <span style="font-size:9px;color:#664422;flex-shrink:0;">Mode:</span>
+          <button class="em-mode-btn" id="mn-static-btn" style="border-color:#ffaa3388;color:#ffaa33;background:rgba(255,170,50,.15);" onclick="setMNMode('static')">Statique</button>
+          <button class="em-mode-btn" id="mn-drag-btn"   style="border-color:#44aaff55;color:#44aaff;background:transparent;" onclick="setMNMode('drag')">Interactif</button>
         </div>
         <button onclick="resetEMView()" style="margin-left:auto;font-size:9px;padding:4px 10px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);color:#332;cursor:pointer;flex-shrink:0;font-family:'Courier New',monospace;">Reset</button>
       </div>
@@ -682,11 +865,13 @@ function spaceLoop(){
   const h=el.clientHeight||(window.innerHeight-78);
   spaceRenderer.setSize(w,h); spaceCamera.aspect=w/h; spaceCamera.updateProjectionMatrix();
 
-  if (keys['ArrowLeft']||keys['a']||keys['A']) panX-=.07;
-  if (keys['ArrowRight']||keys['d']||keys['D']) panX+=.07;
-  if (keys['w']||keys['W']||keys['ArrowUp']) panY+=.07;
-  if (keys['ArrowDown']) panY-=.07;
-  if (CFG.rot||keys['r']||keys['R']) camT+=.004*CFG.rspd;
+  if(curTab==='space'){
+    if (keys['ArrowLeft']||keys['a']||keys['A']) panX-=.07;
+    if (keys['ArrowRight']||keys['d']||keys['D']) panX+=.07;
+    if (keys['w']||keys['W']||keys['ArrowUp']) panY+=.07;
+    if (keys['ArrowDown']) panY-=.07;
+    if (CFG.rot||keys['r']||keys['R']) camT+=.004*CFG.rspd;
+  }
 
   spaceCamera.position.set(
     Math.sin(camT)*Math.cos(camP)*camR2+panX,
@@ -724,7 +909,7 @@ spaceLoop();
 // ═══════════════════════════════════════════════
 let emInited=false;
 let emScene, emRenderer, emCamera;
-let emT=0, emP=.2, emRad=18, emPX=0, emPY=0;
+let emT=0, emP=0.2, emRad=15, emPX=0, emPY=0;
 let emDrag=false, emRDrag=false, emLM={x:0,y:0}, emPinch=0, emPinchPan=null;
 let emMagMode='attract';
 const emActive={};
@@ -798,126 +983,412 @@ function buildBarMagnet(pos){
   return g;
 }
 
-function buildWire(pos){
-  const g=new THREE.Group(); g.position.copy(pos);
-  const pivot=new THREE.Group();
-  pivot.add(new THREE.Mesh(new THREE.CylinderGeometry(.12,.12,5,16), new THREE.MeshPhongMaterial({ color:0xcc7722, emissive:0x441100, shininess:80 })));
-  pivot.add(new THREE.ArrowHelper(new THREE.Vector3(0,1,0),new THREE.Vector3(0,-2.8,0),1.4,0xffcc44,.4,.2));
-  pivot.userData.selfRotSpd=0; // wire doesn't spin
-  g.add(pivot);
-  const fg=new THREE.Group(); fg.userData.isField=true;
-  const numRings=Math.max(3,CFG.fdens);
-  const ringCols=[0x44ffcc,0x22ddaa,0x119988,0x0a6655];
-  for (let ri=0; ri<numRings; ri++){
-    const r=1.2+ri*.9; const op=CFG.fopac*(.65-.1*ri);
-    const ring=new THREE.Mesh(new THREE.TorusGeometry(r,.018,6,48), new THREE.MeshBasicMaterial({ color:ringCols[ri%4], transparent:true, opacity:op }));
-    ring.rotation.x=Math.PI/2; ring.position.y=(ri-.5)*0.4; fg.add(ring);
-    const cone=new THREE.Mesh(new THREE.ConeGeometry(.07,.22,6), new THREE.MeshBasicMaterial({ color:ringCols[ri%4], transparent:true, opacity:op }));
-    cone.position.set(r,ring.position.y,0); cone.rotation.z=-Math.PI/2; fg.add(cone);
-  }
-  g.add(fg); return g;
+
+
+
+
+// ── helper: compass needle pointing along angle (radians, in XY plane) ──
+function makeNeedle(angle){
+  const p=new THREE.Group();
+  // red = N tip (points in +angle direction)
+  const red=new THREE.Mesh(new THREE.ConeGeometry(.11,.5,8),
+    new THREE.MeshPhongMaterial({color:0xff2222,emissive:0x330000}));
+  red.rotation.z=-Math.PI/2; red.position.x=.2; p.add(red);
+  // blue = S tip
+  const blue=new THREE.Mesh(new THREE.ConeGeometry(.11,.5,8),
+    new THREE.MeshPhongMaterial({color:0x2244ff,emissive:0x000033}));
+  blue.rotation.z=Math.PI/2; blue.position.x=-.2; p.add(blue);
+  // pivot dot
+  p.add(new THREE.Mesh(new THREE.SphereGeometry(.08,8,8),
+    new THREE.MeshPhongMaterial({color:0x999999})));
+  p.rotation.z=angle;
+  return p;
 }
 
-function buildSolenoid(pos){
-  const g=new THREE.Group(); g.position.copy(pos);
-  const pivot=new THREE.Group();
-  const nTurns=8, len=4;
-  for (let i=0; i<nTurns; i++){
-    const coil=new THREE.Mesh(new THREE.TorusGeometry(.8,.05,8,32), new THREE.MeshPhongMaterial({ color:0xcc7722, emissive:0x441100 }));
-    coil.position.y=-len/2+i*(len/(nTurns-1)); pivot.add(coil);
-  }
-  pivot.add(new THREE.Mesh(new THREE.CylinderGeometry(.3,.3,len+.4,12), new THREE.MeshPhongMaterial({ color:0x666677, emissive:0x111122 })));
-  pivot.userData.selfRotSpd=.004;
-  g.add(pivot);
-  const fg=new THREE.Group(); fg.userData.isField=true;
-  const nIn=Math.max(4,CFG.fdens);
-  for (let i=0; i<nIn; i++){
-    const angle=(i/nIn)*Math.PI*2; const rx=Math.cos(angle)*.22, rz=Math.sin(angle)*.22;
-    const tube=emTube([new THREE.Vector3(rx,-len/2-.3,rz),new THREE.Vector3(rx,len/2+.3,rz)],0x44ffcc,CFG.fopac*.7,.012);
-    if (tube) fg.add(tube);
-    const cone=new THREE.Mesh(new THREE.ConeGeometry(.07,.22,6), new THREE.MeshBasicMaterial({ color:0x44ffcc, transparent:true, opacity:CFG.fopac*.85 }));
-    cone.position.set(rx,0,rz); fg.add(cone);
-  }
-  buildDipoleFieldAroundPos(new THREE.Vector3(0,0,0),.82,0x22ddaa,0x44ffcc,fg);
-  g.add(fg); return g;
+// ── helper: magnet half-block ──
+function magHalf(w,h,d,col,emit,ox){
+  const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),
+    new THREE.MeshPhongMaterial({color:col,emissive:emit,shininess:60}));
+  m.position.x=ox; return m;
 }
 
-function buildHorseshoe(pos){
-  const g=new THREE.Group(); g.position.copy(pos);
-  const pivot=new THREE.Group();
-  const leftArm=new THREE.Mesh(new THREE.BoxGeometry(.7,.7,3), new THREE.MeshPhongMaterial({ color:0xcc2222, emissive:0x440000 })); leftArm.position.set(-1,0,0); pivot.add(leftArm);
-  const rightArm=new THREE.Mesh(new THREE.BoxGeometry(.7,.7,3), new THREE.MeshPhongMaterial({ color:0x2244cc, emissive:0x000044 })); rightArm.position.set(1,0,0); pivot.add(rightArm);
-  const bridge=new THREE.Mesh(new THREE.BoxGeometry(2.7,.7,0.7), new THREE.MeshPhongMaterial({ color:0x888888, emissive:0x111111 })); bridge.position.set(0,0,-1.15); pivot.add(bridge);
-  ['N','S'].forEach((lbl,li)=>{
-    const lc=document.createElement('canvas'); lc.width=64; lc.height=64; const lx=lc.getContext('2d');
-    lx.fillStyle=li===0?'#ff8888':'#8899ff'; lx.font='bold 44px Arial'; lx.textAlign='center'; lx.textBaseline='middle'; lx.fillText(lbl,32,32);
-    const spr=new THREE.Sprite(new THREE.SpriteMaterial({ map:new THREE.CanvasTexture(lc), depthTest:false }));
-    spr.scale.set(.7,.7,.7); spr.position.set(li===0?-1:1,.75,1.8); pivot.add(spr);
-  });
-  pivot.userData.selfRotSpd=.005;
-  g.add(pivot);
-  const fg=new THREE.Group(); fg.userData.isField=true;
-  const numArcs=Math.max(3,CFG.fdens);
-  for (let a=0; a<numArcs; a++){
-    const spread=.5+a*.55; const arcPts=[];
-    for (let t=0; t<=30; t++){ const f=t/30; arcPts.push(new THREE.Vector3(-1+2*f, spread*Math.sin(f*Math.PI), 1.6-a*.15)); }
-    const col=a%2===0?0x44ddff:0x22aaff;
-    const tube=emTube(arcPts,col,CFG.fopac*(.6-.06*a),.013); if (tube) fg.add(tube);
-    emConeArrow(arcPts,col,fg); if (a%2===0) emAddFlow(arcPts,col,fg);
-  }
-  g.add(fg); return g;
+// ── helper: pole sprite ──
+function poleSprite(lbl,col){
+  const lc=document.createElement('canvas'); lc.width=56; lc.height=56;
+  const lx=lc.getContext('2d'); lx.fillStyle=col;
+  lx.font='bold 40px Arial'; lx.textAlign='center'; lx.textBaseline='middle';
+  lx.fillText(lbl,28,28);
+  const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(lc),depthTest:false}));
+  spr.scale.set(.65,.65,.65); return spr;
 }
 
+// ══════════════════════════════════════════
+//  1. AIMANT / AIGUILLE AIMANTÉE
+//  Bar magnet (S=blue left, N=red right)
+//  Compass needles face field direction:
+//  red tip away from N, blue tip toward N
+// ══════════════════════════════════════════
+// ══════════════════════════════════════════
+//  AIMANT / AIGUILLE — two modes
+//  Mode A: static needles showing field pattern
+//  Mode B: draggable magnet, live needle
+// ══════════════════════════════════════════
+let mnMode='static'; // 'static' | 'drag'
+let mnGroup=null, mnDragMagnet=null, mnDragAngle=0;
+let mnDragging=false, mnMouseWorld={x:0,y:0};
+
+function buildMagnetNeedle(pos){
+  const g=new THREE.Group(); g.position.copy(pos);
+  mnGroup=g;
+
+  if(mnMode==='static'){
+    // ── Static: magnet + field needles
+    const pivot=new THREE.Group();
+    pivot.add(magHalf(3,.65,1.1, 0x2244cc,0x000033, -1.5));
+    pivot.add(magHalf(3,.65,1.1, 0xcc2222,0x330000,  1.5));
+    const sS=poleSprite('S','#8899ff'); sS.position.set(-2.5,.75,0); pivot.add(sS);
+    const sN=poleSprite('N','#ff8888'); sN.position.set( 2.5,.75,0); pivot.add(sN);
+    pivot.userData.selfRotSpd=0; g.add(pivot);
+
+    const needlePositions=[
+      [-4.5,0],[-4,1.5],[-4,-1.5],[-3,2.5],[-3,-2.5],
+      [4.5,0],[4,1.5],[4,-1.5],[3,2.5],[3,-2.5],
+      [0,2.8],[0,-2.8],[0,1.8],[0,-1.8],
+      [-2,2],[-2,-2],[2,2],[2,-2]
+    ];
+    needlePositions.forEach(([nx,ny])=>{
+      const r=Math.sqrt(nx*nx+ny*ny)||.01;
+      const cosT=nx/r, sinT=ny/r;
+      const Bx=3*cosT*cosT-1, By=3*cosT*sinT;
+      const n=makeNeedle(Math.atan2(By,Bx));
+      n.position.set(nx,ny,0); g.add(n);
+    });
+    const fg=new THREE.Group(); fg.userData.isField=true;
+    buildDipoleFieldAroundPos(new THREE.Vector3(0,0,0),.55,0xff6644,0x4466ff,fg);
+    g.add(fg); g.userData.pivot=pivot;
+
+  } else {
+    // ── Interactive mode: draggable magnet + single compass with radius ring ──
+
+    // Draggable bar magnet
+    const dmg=new THREE.Group();
+    dmg.add(magHalf(2.8,.62,1.05, 0x2244cc,0x000033,-0.72));
+    dmg.add(magHalf(2.8,.62,1.05, 0xcc2222,0x330000, 0.72));
+    const dS=poleSprite('S','#8899ff'); dS.position.set(-1.45,.68,0); dmg.add(dS);
+    const dN=poleSprite('N','#ff8888'); dN.position.set( 1.45,.68,0); dmg.add(dN);
+    // Glow halo so user knows it's draggable
+    dmg.add(new THREE.Mesh(new THREE.BoxGeometry(3.2,.9,1.3),
+      new THREE.MeshBasicMaterial({color:0xffaa33,transparent:true,opacity:.07,side:THREE.BackSide})));
+    dmg.position.set(-3,0,.05);
+    g.add(dmg); mnDragMagnet=dmg;
+
+    // Compass: single needle + detection-radius circle, draggable too
+    const compassG=new THREE.Group();
+    compassG.position.set(3,0,0);
+
+    // Outer ring (detection radius)
+    const ringR=1.6;
+    compassG.add(new THREE.Mesh(
+      new THREE.TorusGeometry(ringR,.04,8,64),
+      new THREE.MeshBasicMaterial({color:0x334455,transparent:true,opacity:.55})));
+    // Tick marks around ring
+    for(let ti=0;ti<12;ti++){
+      const ta=(ti/12)*Math.PI*2;
+      const tick=new THREE.Mesh(new THREE.BoxGeometry(.06,.25,.06),
+        new THREE.MeshBasicMaterial({color:0x445566,transparent:true,opacity:.4}));
+      tick.position.set(Math.cos(ta)*ringR,Math.sin(ta)*ringR,0);
+      tick.rotation.z=ta; compassG.add(tick);
+    }
+    // Compass housing (dark circle)
+    compassG.add(new THREE.Mesh(
+      new THREE.CircleGeometry(.55,32),
+      new THREE.MeshBasicMaterial({color:0x0a0f14})));
+    compassG.add(new THREE.Mesh(
+      new THREE.TorusGeometry(.55,.055,8,32),
+      new THREE.MeshPhongMaterial({color:0x334455,shininess:60})));
+    // N/S cardinal labels
+    [['N',0,0.72,0xffaaaa],['S',0,-0.72,0xaabbff],
+     ['E',0.72,0,0x888888],['W',-0.72,0,0x888888]].forEach(([lbl,lx,ly,col])=>{
+      const cc=document.createElement('canvas'); cc.width=32; cc.height=32;
+      const cx2=cc.getContext('2d'); cx2.fillStyle='#'+col.toString(16).padStart(6,'0');
+      cx2.font='bold 20px Arial'; cx2.textAlign='center'; cx2.textBaseline='middle';
+      cx2.fillText(lbl,16,16);
+      const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cc),depthTest:false}));
+      spr.scale.set(.35,.35,.35); spr.position.set(lx,ly,0.02); compassG.add(spr);
+    });
+    // The needle (lives at compassG origin, rotates via rotation.z)
+    const needleMesh=makeNeedle(0);
+    compassG.add(needleMesh);
+    compassG.userData.needle=needleMesh;
+    g.add(compassG);
+    g.userData.compassG=compassG;
+
+    g.userData.pivot=new THREE.Group(); g.userData.pivot.userData.selfRotSpd=0;
+  }
+  return g;
+}
+
+function updateMNNeedles(){
+  if(!mnGroup||mnMode!=='drag'||!mnDragMagnet||!mnGroup.userData.compassG) return;
+  const cG=mnGroup.userData.compassG;
+  const needle=cG.userData.needle;
+  if(!needle) return;
+  // Compass world position (group offset + compassG local pos)
+  const gp=mnGroup.position;
+  const cx=gp.x+cG.position.x, cy=gp.y+cG.position.y;
+  // Magnet center world pos
+  const mx=gp.x+mnDragMagnet.position.x, my=gp.y+mnDragMagnet.position.y;
+  const dx=cx-mx, dy=cy-my;
+  const r=Math.sqrt(dx*dx+dy*dy)||.01;
+  const cosT=dx/r, sinT=dy/r;
+  // Dipole B direction
+  const Bx=3*cosT*cosT-1, By=3*cosT*sinT;
+  needle.rotation.z=Math.atan2(By,Bx);
+  // Field strength → ring opacity pulse
+  const Bmag=1/(r*r);
+  const pulseOp=Math.min(.9, 0.12+Bmag*2.5);
+  cG.children[0].material.opacity=pulseOp; // ring opacity
+}
+
+// ══════════════════════════════════════════
+//  2. OERSTED
+
+// ══════════════════════════════════════════
+//  2. OERSTED — courant sur aiguille
+//  Copper bar (current right →)
+//  Table plane visible
+//  Compass needles ON the table, deflected
+//  by circular B field (right-hand rule)
+// ══════════════════════════════════════════
+
+// ══════════════════════════════════════════
+//  TWO MAGNETS — fixed labels + field
+// ══════════════════════════════════════════
 function buildTwoMagnets(pos){
   const g=new THREE.Group(); g.position.copy(pos);
   const mode=emMagMode;
-  const lm=new THREE.Group(); lm.position.set(-3.5,0,0);
-  const lN=new THREE.Mesh(new THREE.BoxGeometry(1,.7,1.8), new THREE.MeshPhongMaterial({ color:0xcc2222, emissive:0x440000 })); lN.position.x=.5; lm.add(lN);
-  const lS=new THREE.Mesh(new THREE.BoxGeometry(1,.7,1.8), new THREE.MeshPhongMaterial({ color:0x2244cc, emissive:0x000044 })); lS.position.x=-.5; lm.add(lS);
-  g.add(lm);
-  const rm=new THREE.Group(); rm.position.set(3.5,0,0);
-  const rFN=mode==='attract';
-  const rR=new THREE.Mesh(new THREE.BoxGeometry(1,.7,1.8), new THREE.MeshPhongMaterial({ color:rFN?0x2244cc:0xcc2222, emissive:rFN?0x000044:0x440000 })); rR.position.x=.5; rm.add(rR);
-  const rL=new THREE.Mesh(new THREE.BoxGeometry(1,.7,1.8), new THREE.MeshPhongMaterial({ color:rFN?0xcc2222:0x2244cc, emissive:rFN?0x440000:0x000044 })); rL.position.x=-.5; rm.add(rL);
-  g.add(rm);
-  [[-3,.75,0,'N'],[3.5,.75,0,'S']].forEach(([px,py,pz,lbl])=>{
-    const lc=document.createElement('canvas'); lc.width=64; lc.height=64; const lx=lc.getContext('2d');
-    lx.fillStyle=lbl==='N'?'#ff8888':'#8899ff'; lx.font='bold 42px Arial'; lx.textAlign='center'; lx.textBaseline='middle'; lx.fillText(lbl,32,32);
-    const spr=new THREE.Sprite(new THREE.SpriteMaterial({ map:new THREE.CanvasTexture(lc), depthTest:false }));
-    spr.scale.set(.7,.7,.7); spr.position.set(px,py,pz); g.add(spr);
-  });
-  const fg=new THREE.Group(); fg.userData.isField=true;
-  const nLines=Math.max(4,CFG.fdens);
-  if (mode==='attract'){
-    for (let i=0; i<nLines; i++){
-      const spread=.4+i*.5; const zOff=(i-(nLines-1)/2)*.4; const arcPts=[];
-      for (let t=0; t<=40; t++){ const f=t/40; arcPts.push(new THREE.Vector3(-3+6*f, spread*Math.sin(f*Math.PI), zOff)); }
-      const col=i%2===0?0x44ffcc:0x22ddaa;
-      const tube=emTube(arcPts,col,CFG.fopac*(.65-.06*i),.013); if (tube) fg.add(tube);
-      emConeArrow(arcPts,col,fg); if (i%2===0) emAddFlow(arcPts,col,fg);
-    }
+
+  // Left magnet: N on right face (+x), S on left face (-x)
+  const lGrp=new THREE.Group(); lGrp.position.x=-3.8;
+  lGrp.add(magHalf(2.2,.7,1.4, 0x2244cc,0x000033, -0.55)); // S blue
+  lGrp.add(magHalf(2.2,.7,1.4, 0xcc2222,0x330000,  0.55)); // N red
+  const lS=poleSprite('S','#8899ff'); lS.position.set(-1.1,.75,0); lGrp.add(lS);
+  const lN=poleSprite('N','#ff8888'); lN.position.set( 1.1,.75,0); lGrp.add(lN);
+  g.add(lGrp);
+
+  // Right magnet faces depend on mode
+  const rGrp=new THREE.Group(); rGrp.position.x=3.8;
+  if(mode==='attract'){
+    // S faces left (toward left magnet's N) → S on left, N on right
+    rGrp.add(magHalf(2.2,.7,1.4, 0x2244cc,0x000033, -0.55)); // S blue (left face)
+    rGrp.add(magHalf(2.2,.7,1.4, 0xcc2222,0x330000,  0.55)); // N red (right face)
+    const rS2=poleSprite('S','#8899ff'); rS2.position.set(-1.1,.75,0); rGrp.add(rS2);
+    const rN2=poleSprite('N','#ff8888'); rN2.position.set( 1.1,.75,0); rGrp.add(rN2);
   } else {
-    for (let side=0; side<2; side++){
-      const xOff=side===0?-3.5:3.5; const xDir=side===0?-1:1;
-      for (let i=0; i<Math.ceil(nLines/2); i++){
-        const spread=1+i*.7; const arcPts=[];
-        for (let t=0; t<=40; t++){ const f=t/40; arcPts.push(new THREE.Vector3(xOff+xDir*spread*Math.cos(f*Math.PI), spread*.8*Math.sin(f*Math.PI), (i-nLines/4)*.6)); }
-        const tube=emTube(arcPts,0xff9966,CFG.fopac*(.6-.07*i),.013); if (tube) fg.add(tube);
-        emConeArrow(arcPts,0xff9966,fg);
-      }
+    // N faces left (repels left magnet's N) → N on left, S on right
+    rGrp.add(magHalf(2.2,.7,1.4, 0xcc2222,0x330000, -0.55)); // N red (left face)
+    rGrp.add(magHalf(2.2,.7,1.4, 0x2244cc,0x000033,  0.55)); // S blue (right face)
+    const rN3=poleSprite('N','#ff8888'); rN3.position.set(-1.1,.75,0); rGrp.add(rN3);
+    const rS3=poleSprite('S','#8899ff'); rS3.position.set( 1.1,.75,0); rGrp.add(rS3);
+  }
+  g.add(rGrp);
+
+  // Field lines
+  const fg=new THREE.Group(); fg.userData.isField=true;
+  const nL=Math.max(5,CFG.fdens);
+  if(mode==='attract'){
+    // Lines arc from left N (+x face of lGrp) to right S (-x face of rGrp)
+    for(let i=0;i<nL;i++){
+      const spread=.5+i*.6; const zOff=(i-(nL-1)/2)*.45;
+      const pts=[];
+      for(let t=0;t<=40;t++){ const f=t/40;
+        pts.push(new THREE.Vector3(-2.7+5.4*f, spread*Math.sin(f*Math.PI), zOff)); }
+      const col=i%2===0?0x44ffcc:0x22ddaa;
+      const tube=emTube(pts,col,CFG.fopac*(.7-.06*i),.014); if(tube) fg.add(tube);
+      emConeArrow(pts,col,fg); if(i%2===0) emAddFlow(pts,col,fg);
     }
+    // Force arrow between magnets
+    const arrowL=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(-4.5,0,0),1.5,0x00ff88,.4,.2);
+    const arrowR=new THREE.ArrowHelper(new THREE.Vector3(-1,0,0),new THREE.Vector3(4.5,0,0),1.5,0x00ff88,.4,.2);
+    fg.add(arrowL); fg.add(arrowR);
+  } else {
+    // Repulsion: lines loop back from each N pole outward
+    [-3.8,3.8].forEach((cx,si)=>{
+      const dir=si===0?-1:1;
+      for(let i=0;i<Math.ceil(nL/2);i++){
+        const spread=.8+i*.7; const pts=[];
+        for(let t=0;t<=40;t++){ const f=t/40;
+          pts.push(new THREE.Vector3(cx+dir*spread*Math.sin(f*Math.PI),
+            spread*.8*Math.sin(f*Math.PI), (i-(nL-1)/4)*.5)); }
+        const tube=emTube(pts,0xff9966,CFG.fopac*(.65-.07*i),.014); if(tube) fg.add(tube);
+        emConeArrow(pts,0xff9966,fg); if(i%2===0) emAddFlow(pts,0xff9966,fg);
+      }
+    });
+    // Repulsion force arrows (pushing away)
+    const arrowL2=new THREE.ArrowHelper(new THREE.Vector3(-1,0,0),new THREE.Vector3(-2.7,0,0),1.4,0xff4444,.4,.2);
+    const arrowR2=new THREE.ArrowHelper(new THREE.Vector3(1,0,0),new THREE.Vector3(2.7,0,0),1.4,0xff4444,.4,.2);
+    fg.add(arrowL2); fg.add(arrowR2);
   }
   g.add(fg);
   document.getElementById('two-mag-controls').style.display='flex';
   return g;
 }
 
+
+// ══════════════════════════════════════════
+//  COURANT / CHAMP — Magnetic field from current (battery circuit)
+//  Shows: battery → wire loop → compass needle deflects
+// ══════════════════════════════════════════
+function buildCurrentBattery(pos){
+  const g=new THREE.Group(); g.position.copy(pos);
+
+  // ── Background plane (dark, like PhET) ──
+  const bg=new THREE.Mesh(new THREE.PlaneGeometry(22,13),
+    new THREE.MeshBasicMaterial({color:0x06080f,transparent:true,opacity:.7}));
+  bg.position.z=-.05; g.add(bg);
+
+  // ── Frame border ──
+  g.add(new THREE.LineSegments(
+    new THREE.EdgesGeometry(new THREE.BoxGeometry(22,13,.01)),
+    new THREE.LineBasicMaterial({color:0x223344,transparent:true,opacity:.4})));
+
+  // ── Grid lines (reference) ──
+  const gridMat=new THREE.LineBasicMaterial({color:0x112233,transparent:true,opacity:.25});
+  for(let gx=-10;gx<=10;gx+=2){
+    const pts=[new THREE.Vector3(gx,-6.5,-.04),new THREE.Vector3(gx,6.5,-.04)];
+    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),gridMat));
+  }
+  for(let gy=-6;gy<=6;gy+=2){
+    const pts=[new THREE.Vector3(-11,gy,-.04),new THREE.Vector3(11,gy,-.04)];
+    g.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),gridMat));
+  }
+
+  const pivot=new THREE.Group();
+
+  // ── Bar magnet (center, horizontal, draggable) ──
+  const batMag=new THREE.Group();
+  batMag.add(magHalf(4,.8,1.1, 0x2244cc,0x000033,-1.05));  // S blue
+  batMag.add(magHalf(4,.8,1.1, 0xcc2222,0x330000, 1.05));  // N red
+  const bS=poleSprite('S','#aabbff'); bS.position.set(-2.1,.72,0); batMag.add(bS);
+  const bN=poleSprite('N','#ff9999'); bN.position.set( 2.1,.72,0); batMag.add(bN);
+  // Glow
+  batMag.add(new THREE.Mesh(new THREE.BoxGeometry(4.6,1.1,1.3),
+    new THREE.MeshBasicMaterial({color:0x8844ff,transparent:true,opacity:.05,side:THREE.BackSide})));
+  batMag.userData.isCBMagnet=true;
+  pivot.add(batMag); g.userData.cbMagnet=batMag;
+
+  // ── Field arrow grid (PhET-style) ──
+  // Each arrow = small cone pointing in dipole field direction, scaled by |B|
+  const arrowGroup=new THREE.Group(); arrowGroup.userData.isFieldArrows=true;
+  const arrowMeshes=[];
+  const arrowMat=new THREE.MeshBasicMaterial({color:0x44aaff,transparent:true,opacity:.0});
+  for(let ax=-9;ax<=9;ax+=2.2) for(let ay=-5;ay<=5;ay+=2.0){
+    const ar=new THREE.Group();
+    ar.position.set(ax,ay,0);
+    // shaft
+    const shaft=new THREE.Mesh(new THREE.CylinderGeometry(.04,.04,.5,4),
+      new THREE.MeshBasicMaterial({color:0x44aaff,transparent:true,opacity:.65}));
+    shaft.position.y=.12; ar.add(shaft);
+    // head
+    const head=new THREE.Mesh(new THREE.ConeGeometry(.12,.28,6),
+      new THREE.MeshBasicMaterial({color:0x88ccff,transparent:true,opacity:.75}));
+    head.position.y=.48; ar.add(head);
+    arrowGroup.add(ar); arrowMeshes.push({group:ar,ax,ay});
+  }
+  pivot.add(arrowGroup);
+  g.userData.arrowMeshes=arrowMeshes;
+  g.userData.arrowGroup=arrowGroup;
+
+  pivot.userData.selfRotSpd=0;
+  g.add(pivot); g.userData.pivot=pivot;
+
+  // ── Single compass (draggable) ──
+  const compG=new THREE.Group(); compG.position.set(5,3,0.1);
+  const ringR2=1.4;
+  compG.add(new THREE.Mesh(
+    new THREE.TorusGeometry(ringR2,.045,8,64),
+    new THREE.MeshBasicMaterial({color:0x336677,transparent:true,opacity:.6})));
+  compG.add(new THREE.Mesh(
+    new THREE.CircleGeometry(.5,32),
+    new THREE.MeshBasicMaterial({color:0x050a10})));
+  compG.add(new THREE.Mesh(
+    new THREE.TorusGeometry(.5,.05,8,32),
+    new THREE.MeshPhongMaterial({color:0x446677,shininess:80})));
+  // cardinal labels
+  [['N',0,.68,0xffaaaa],['S',0,-.68,0xaabbff],
+   ['E',.68,0,0x667788],['W',-.68,0,0x667788]].forEach(([lbl,lx,ly,col])=>{
+    const cc=document.createElement('canvas'); cc.width=28; cc.height=28;
+    const cx2=cc.getContext('2d'); cx2.fillStyle='#'+col.toString(16).padStart(6,'0');
+    cx2.font='bold 18px Arial'; cx2.textAlign='center'; cx2.textBaseline='middle';
+    cx2.fillText(lbl,14,14);
+    const spr=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(cc),depthTest:false}));
+    spr.scale.set(.32,.32,.32); spr.position.set(lx,ly,.02); compG.add(spr);
+  });
+  // tick marks
+  for(let ti=0;ti<12;ti++){
+    const ta=(ti/12)*Math.PI*2;
+    const tick=new THREE.Mesh(new THREE.BoxGeometry(.05,.22,.05),
+      new THREE.MeshBasicMaterial({color:0x334455,transparent:true,opacity:.4}));
+    tick.position.set(Math.cos(ta)*ringR2,Math.sin(ta)*ringR2,0);
+    tick.rotation.z=ta; compG.add(tick);
+  }
+  const cbNeedle=makeNeedle(0); compG.add(cbNeedle);
+  compG.userData.needle=cbNeedle;
+  g.add(compG); g.userData.cbCompass=compG;
+
+  // ── B-field magnitude indicator (circle under compass) ──
+  const bInd=new THREE.Mesh(
+    new THREE.CircleGeometry(ringR2*.95,32),
+    new THREE.MeshBasicMaterial({color:0x2255aa,transparent:true,opacity:.0,side:THREE.DoubleSide}));
+  bInd.position.set(0,0,-.01); compG.add(bInd); compG.userData.bInd=bInd;
+
+  return g;
+}
+
+// ── CB update: arrow grid + compass per-frame ──
+let cbCompassDragging=false, cbMagnetDragging=false;
+function updateCBField(){
+  const grp=emActive['Courant/Champ']?emActive['Courant/Champ'].group:null;
+  if(!grp) return;
+  const mag=grp.userData.cbMagnet;
+  const comp=grp.userData.cbCompass;
+  const arrows=grp.userData.arrowMeshes;
+  if(!mag||!comp||!arrows) return;
+  const mx=grp.position.x+mag.position.x, my=grp.position.y+mag.position.y;
+
+  // Update each field arrow
+  arrows.forEach(({group:ar,ax,ay})=>{
+    const dx=ax-mag.position.x, dy=ay-mag.position.y;
+    const r=Math.sqrt(dx*dx+dy*dy)||.01;
+    const cosT=dx/r, sinT=dy/r;
+    const Bx=3*cosT*cosT-1, By=3*cosT*sinT;
+    const angle=Math.atan2(By,Bx);
+    ar.rotation.z=angle-Math.PI/2; // cone points up by default
+    const Bmag=Math.min(1,1.5/(r*r));
+    const op=0.1+Bmag*.7;
+    const sc=0.5+Bmag*.8;
+    ar.scale.setScalar(sc);
+    ar.children.forEach(c=>{ c.material.opacity=op; });
+  });
+
+  // Update compass needle
+  const cdx=comp.position.x-mag.position.x, cdy=comp.position.y-mag.position.y;
+  const cr=Math.sqrt(cdx*cdx+cdy*cdy)||.01;
+  const cCosT=cdx/cr, cSinT=cdy/cr;
+  const cBx=3*cCosT*cCosT-1, cBy=3*cCosT*cSinT;
+  comp.userData.needle.rotation.z=Math.atan2(cBy,cBx);
+  // B-strength indicator glow
+  const cBmag=Math.min(1, 1.2/(cr*cr));
+  comp.userData.bInd.material.opacity=cBmag*.25;
+  comp.userData.bInd.material.color.setHex(cBmag>.5?0x4488ff:0x2244aa);
+}
+
+
 const EMDEFS={
-  'Bar Magnet':{ col:'#cc4444', build:buildBarMagnet  },
-  'Wire':       { col:'#cc9933', build:buildWire       },
-  'Solenoid':   { col:'#44aacc', build:buildSolenoid   },
-  'Horseshoe':  { col:'#cc44aa', build:buildHorseshoe  },
-  'Two Magnets':{ col:'#88ff88', build:buildTwoMagnets }
+  'Bar Magnet':     { col:'#cc4444', build:buildBarMagnet     },
+  'Two Magnets':    { col:'#88ff88', build:buildTwoMagnets    },
+  'Aimant/Aiguille':{ col:'#ffaa33', build:buildMagnetNeedle  },
+  'Courant/Champ':  { col:'#44aaff', build:buildCurrentBattery}
 };
 const emBodyPivots={};
 
@@ -926,6 +1397,7 @@ function addEMObj(name){
   const g=EMDEFS[name].build(new THREE.Vector3(0,0,0));
   emScene.add(g); emActive[name]={group:g};
   if (g.userData.pivot) emBodyPivots[name]=g.userData.pivot;
+  if (name==='Aimant/Aiguille') document.getElementById('mn-mode-strip').style.display='flex';
   repositionEM();
 }
 function removeEMObj(name){
@@ -933,6 +1405,7 @@ function removeEMObj(name){
   emScene.remove(emActive[name].group); delete emActive[name]; delete emBodyPivots[name];
   repositionEM();
   if (name==='Two Magnets') document.getElementById('two-mag-controls').style.display='none';
+  if (name==='Aimant/Aiguille') document.getElementById('mn-mode-strip').style.display='none';
 }
 function repositionEM(){
   const names=Object.keys(emActive); const sp=9;
@@ -947,7 +1420,22 @@ function setMagMode(mode){
     const g=buildTwoMagnets(new THREE.Vector3(0,0,0)); emScene.add(g); emActive['Two Magnets']={group:g}; repositionEM();
   }
 }
-function resetEMView(){ emT=0; emP=.2; emRad=18; emPX=0; emPY=0; }
+function resetEMView(){ emT=0; emP=0.2; emRad=15; emPX=0; emPY=0; }
+
+function setMNMode(mode){
+  mnMode=mode;
+  document.getElementById('mn-static-btn').style.background=mode==='static'?'rgba(255,170,50,.2)':'transparent';
+  document.getElementById('mn-drag-btn').style.background=mode==='drag'?'rgba(68,170,255,.2)':'transparent';
+  if(emActive['Aimant/Aiguille']){
+    emScene.remove(emActive['Aimant/Aiguille'].group);
+    delete emActive['Aimant/Aiguille']; delete emBodyPivots['Aimant/Aiguille'];
+    while(emParticles.length) emParticles.pop();
+    const g=buildMagnetNeedle(new THREE.Vector3(0,0,0));
+    emScene.add(g); emActive['Aimant/Aiguille']={group:g};
+    if(g.userData.pivot) emBodyPivots['Aimant/Aiguille']=g.userData.pivot;
+    repositionEM();
+  }
+}
 
 function initEM(){
   emInited=true;
@@ -955,9 +1443,13 @@ function initEM(){
   emRenderer=new THREE.WebGLRenderer({ canvas:ec, antialias:true });
   emRenderer.setPixelRatio(Math.min(devicePixelRatio,2));
   emRenderer.setClearColor(0x04040e,1);
+  // force size immediately — panel is visible by now
+  const _ew=ec.parentElement.clientWidth||window.innerWidth;
+  const _eh=(ec.parentElement.clientHeight||window.innerHeight)-44;
+  emRenderer.setSize(_ew,_eh);
   emScene=new THREE.Scene();
   emScene.fog=new THREE.FogExp2(0x04040e,.025);
-  emCamera=new THREE.PerspectiveCamera(50,1,.01,500);
+  emCamera=new THREE.PerspectiveCamera(50,_ew/_eh,.01,500);
   emCamera.position.set(0,5,18);
   emScene.add(new THREE.AmbientLight(0xffffff,.3));
   const dL=new THREE.DirectionalLight(0xffffff,.8); dL.position.set(6,12,8); emScene.add(dL);
@@ -985,6 +1477,94 @@ function initEM(){
   ec.addEventListener('mousedown', e=>{ e.preventDefault(); if (e.button===2) emRDrag=true; else emDrag=true; emLM={x:e.clientX,y:e.clientY}; });
   ec.addEventListener('contextmenu', e=>e.preventDefault());
   ec.addEventListener('wheel', e=>{ emRad=Math.max(5,Math.min(60,emRad+e.deltaY*.04)); },{passive:true});
+
+  // ── Drag-magnet raycasting ──
+  const mnPlane=new THREE.Plane(new THREE.Vector3(0,0,1),0);
+  const mnRaycaster=new THREE.Raycaster();
+  function emGetWorldXY(clientX,clientY){
+    const rect=ec.getBoundingClientRect();
+    const ndc=new THREE.Vector2(
+      ((clientX-rect.left)/rect.width)*2-1,
+      -((clientY-rect.top)/rect.height)*2+1);
+    mnRaycaster.setFromCamera(ndc,emCamera);
+    const target=new THREE.Vector3();
+    mnRaycaster.ray.intersectPlane(mnPlane,target);
+    return target;
+  }
+  let mnCompassDragging=false;
+  function emMNDown(cx,cy){
+    if(mnMode!=='drag'||!emActive['Aimant/Aiguille']) return false;
+    const grp=emActive['Aimant/Aiguille'].group;
+    const gOff=grp.position;
+    const wp=emGetWorldXY(cx,cy);
+    const lp=wp.clone().sub(gOff);
+    // Check compass first
+    const cG=grp.userData.compassG;
+    if(cG){
+      const dc=Math.sqrt((lp.x-cG.position.x)**2+(lp.y-cG.position.y)**2);
+      if(dc<1.8){ mnCompassDragging=true; mnDragging=false; return true; }
+    }
+    // Then magnet
+    if(mnDragMagnet){
+      const d=Math.sqrt((lp.x-mnDragMagnet.position.x)**2+(lp.y-mnDragMagnet.position.y)**2);
+      if(d<2.2){ mnDragging=true; mnCompassDragging=false; return true; }
+    }
+    // CB objects
+    const cbGrp=emActive['Courant/Champ']?emActive['Courant/Champ'].group:null;
+    if(cbGrp){
+      const cbMag=cbGrp.userData.cbMagnet;
+      const cbComp=cbGrp.userData.cbCompass;
+      const cbOff=cbGrp.position;
+      const cbLP=wp.clone().sub(cbOff);
+      if(cbComp){
+        const dc=Math.sqrt((cbLP.x-cbComp.position.x)**2+(cbLP.y-cbComp.position.y)**2);
+        if(dc<1.6){ cbCompassDragging=true; return true; }
+      }
+      if(cbMag){
+        const dm=Math.sqrt((cbLP.x-cbMag.position.x)**2+(cbLP.y-cbMag.position.y)**2);
+        if(dm<2.5){ cbMagnetDragging=true; return true; }
+      }
+    }
+    return false;
+  }
+  function emMNMove(cx,cy){
+    if(!emActive['Aimant/Aiguille']) return;
+    const grp=emActive['Aimant/Aiguille'].group;
+    const gOff=grp.position;
+    const wp=emGetWorldXY(cx,cy);
+    const lp=wp.clone().sub(gOff);
+    if(mnDragging&&mnDragMagnet){
+      mnDragMagnet.position.x=lp.x;
+      mnDragMagnet.position.y=lp.y;
+    }
+    if(mnCompassDragging&&grp.userData.compassG){
+      grp.userData.compassG.position.x=lp.x;
+      grp.userData.compassG.position.y=lp.y;
+    }
+    // CB magnet drag
+    if(cbMagnetDragging){
+      const cg2=emActive['Courant/Champ']?emActive['Courant/Champ'].group:null;
+      if(cg2&&cg2.userData.cbMagnet){ cg2.userData.cbMagnet.position.x=lp.x; cg2.userData.cbMagnet.position.y=lp.y; }
+    }
+    // CB compass drag
+    if(cbCompassDragging){
+      const cg2=emActive['Courant/Champ']?emActive['Courant/Champ'].group:null;
+      if(cg2&&cg2.userData.cbCompass){ cg2.userData.cbCompass.position.x=lp.x; cg2.userData.cbCompass.position.y=lp.y; }
+    }
+  }
+  ec.addEventListener('mousedown',e=>{
+    if(e.button===0&&emMNDown(e.clientX,e.clientY)) e.stopImmediatePropagation();
+  },{capture:true});
+  ec.addEventListener('mousemove',e=>{ emMNMove(e.clientX,e.clientY); });
+  ec.addEventListener('mouseup',()=>{ mnDragging=false; mnCompassDragging=false; cbMagnetDragging=false; cbCompassDragging=false; });
+  ec.addEventListener('touchstart',e=>{
+    if(e.touches.length===1&&emMNDown(e.touches[0].clientX,e.touches[0].clientY))
+      e.stopImmediatePropagation();
+  },{capture:true,passive:false});
+  ec.addEventListener('touchmove',e=>{
+    if(mnDragging&&e.touches.length===1) emMNMove(e.touches[0].clientX,e.touches[0].clientY);
+  },{passive:false});
+  ec.addEventListener('touchend',()=>{ mnDragging=false; mnCompassDragging=false; cbMagnetDragging=false; cbCompassDragging=false; });
   ec.addEventListener('touchstart', e=>{
     e.preventDefault();
     if (e.touches.length===1){ emDrag=true; emPinchPan=null; emLM={x:e.touches[0].clientX,y:e.touches[0].clientY}; }
@@ -999,14 +1579,14 @@ function initEM(){
     e.preventDefault();
     if (e.touches.length===1&&emDrag){
       emT-=(e.touches[0].clientX-emLM.x)*.012;
-      emP=Math.max(-.15,Math.min(1.3,emP+(e.touches[0].clientY-emLM.y)*.012));
+      emP=Math.max(-1.4,Math.min(1.4,emP+(e.touches[0].clientY-emLM.y)*.012));
       emLM={x:e.touches[0].clientX,y:e.touches[0].clientY};
     } else if (e.touches.length===2){
       const d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX, e.touches[0].clientY-e.touches[1].clientY);
       emRad=Math.max(5,Math.min(60,emRad-(d-emPinch)*.05)); emPinch=d;
       if (emPinchPan){
         const cx=(e.touches[0].clientX+e.touches[1].clientX)/2, cy=(e.touches[0].clientY+e.touches[1].clientY)/2;
-        emPX+=(cx-emPinchPan.x)*emRad*.00015; emPY-=(cy-emPinchPan.y)*emRad*.00015;
+        emPX-=(cx-emPinchPan.x)*(emRad/500); emPY+=(cy-emPinchPan.y)*(emRad/500);
         emPinchPan={x:cx,y:cy};
       }
     }
@@ -1015,28 +1595,49 @@ function initEM(){
   function emLoop(){
     requestAnimationFrame(emLoop);
     if (curTab!=='em') return;
-    const ew=ec.clientWidth||window.innerWidth, eh=ec.clientHeight||(window.innerHeight-78);
-    emRenderer.setSize(ew,eh); emCamera.aspect=ew/eh; emCamera.updateProjectionMatrix();
-    emCamera.position.set(Math.sin(emT)*Math.cos(emP)*emRad+emPX, Math.sin(emP)*emRad+emPY, Math.cos(emT)*Math.cos(emP)*emRad);
+    const ew=ec.clientWidth||window.innerWidth;
+    const eh=ec.clientHeight||(window.innerHeight-78);
+    if(emRenderer.domElement.width!==ew||emRenderer.domElement.height!==eh){
+      emRenderer.setSize(ew,eh); emCamera.aspect=ew/eh; emCamera.updateProjectionMatrix();
+    }
+    const x=Math.sin(emT)*Math.cos(emP)*emRad+emPX;
+    const y=Math.sin(emP)*emRad+emPY;
+    const z=Math.cos(emT)*Math.cos(emP)*emRad;
+    emCamera.position.set(x,y,z);
     emCamera.lookAt(emPX,emPY,0);
-    // particles move along curves
     emParticles.forEach(pm=>{
-      if (!pm.userData.curve) return;
+      if(!pm.userData||!pm.userData.curve) return;
       pm.userData.t=(pm.userData.t+pm.userData.spd)%1;
-      try { pm.position.copy(pm.userData.curve.getPoint(pm.userData.t)); } catch(e){}
+      const pos=pm.userData.curve.getPoint(pm.userData.t);
+      pm.position.copy(pos);
     });
-    // body pivots self-rotate
-    Object.values(emBodyPivots).forEach(pv=>{ if (pv&&pv.userData.selfRotSpd) pv.rotation.y+=pv.userData.selfRotSpd; });
+    Object.values(emBodyPivots).forEach(pv=>{ if(pv&&pv.userData.selfRotSpd) pv.rotation.y+=pv.userData.selfRotSpd; });
+    // Live needle update for drag mode
+    if(mnMode==='drag') updateMNNeedles();
+    // PhET-style CB field update
+    updateCBField();
+    // WASD pan in EM lab
+    const spd=emRad*0.0015;
+    if(keys['a']||keys['A']||keys['ArrowLeft'])  emPX+=Math.cos(emT)*spd;
+    if(keys['d']||keys['D']||keys['ArrowRight']) emPX-=Math.cos(emT)*spd;
+    if(keys['w']||keys['W']||keys['ArrowUp'])    emPY+=spd;
+    if(keys['s']||keys['S']||keys['ArrowDown'])  emPY-=spd;
     emRenderer.render(emScene,emCamera);
   }
   emLoop();
 }
 
 window.addEventListener('mousemove', e=>{
-  if (!emInited) return;
+  if(!emInited||curTab!=='em') return;
   const dx=e.clientX-emLM.x, dy=e.clientY-emLM.y;
-  if (emDrag)  { emT-=dx*.007; emP=Math.max(-.15,Math.min(1.3,emP+dy*.007)); }
-  if (emRDrag) { emPX+=dx*emRad*.00009; emPY-=dy*emRad*.00009; }
+  if(emDrag){
+    emT-=dx*0.007;
+    emP=Math.max(-1.4,Math.min(1.4,emP+dy*0.007));
+  } else if(emRDrag){
+    const factor=emRad*0.001;
+    emPX-=dx*factor;
+    emPY+=dy*factor;
+  }
   emLM={x:e.clientX,y:e.clientY};
 });
 window.addEventListener('mouseup', ()=>{ emDrag=false; emRDrag=false; });
@@ -1215,6 +1816,20 @@ function initSoon(){
 // ═══════════════════════════════════════════════
 //  WELCOME
 // ═══════════════════════════════════════════════
+
+function closeIntro(){
+  try{ if(document.getElementById('intro-cb').checked) localStorage.setItem('kyronlab_nointro','1'); }catch(e){}
+  const ov=document.getElementById('intro-overlay');
+  ov.style.transition='opacity .4s'; ov.style.opacity='0';
+  setTimeout(()=>{ ov.style.display='none'; maybeShowWelcome(); },400);
+}
+function maybeShowIntro(){
+  let skip=false;
+  try{ skip=localStorage.getItem('kyronlab_nointro')==='1'; }catch(e){}
+  if(!skip){ document.getElementById('intro-overlay').style.display='flex'; }
+  else{ maybeShowWelcome(); }
+}
+
 function closeWelcome(){
   try{ if(document.getElementById('wc-cb').checked) localStorage.setItem('kyronlab_nowelcome','1'); }catch(e){}
   const ov=document.getElementById('welcome-overlay');
